@@ -14,28 +14,28 @@ project:
     - file: intro.md
 
     # --- Modules ---
-    - title: Module 1 — Data Foundations
+    - title: Week 1 — Data Foundations
       children:
         - file: notebooks/01_Data_Fourier_Practice
 
-    - title: Module 2 — Stress & Strain
+    - title: Week 2 — Stress & Strain
       children:
         - file: lectures/02_Stress_Strain_Lecture
         - file: notebooks/02_Stress_Strain_Practice
 
-    - title: Module 3 — Body Waves
+    - title: Week 3 — Body Waves
       children:
         - file: lectures/ray-theory
         - file: notebooks/03a_Body_Waves_Theory
         - file: notebooks/03b_Ray_Tracing_Cartesian_Practice
         - file: notebooks/03c_Global_Phases_Practice
 
-    - title: Module 4 — Reflection Seismology
+    - title: Week 4 — Reflection Seismology
       children:
         - file: notebooks/04a_Reflection_Transmission_Theory
         - file: notebooks/04b_Reflection_CMP_Practice
 
-    - title: Module 5 — Surface Waves
+    - title: Week 5 — Surface Waves
       children:
         - file: lectures/surface-waves
         - file: notebooks/05a_Rayleigh_Waves_Theory
@@ -43,12 +43,12 @@ project:
         - file: notebooks/05c_Surface_Waves_Practice
         - file: notebooks/05d_Noise_CrossCorrelation_Practice
 
-    - title: Module 6 — Earthquake Sources
+    - title: Week 6 — Earthquake Sources
       children:
         - file: lectures/earthquake-location
         - file: notebooks/06a_Earthquake_Location_Practice
 
-    - title: Module 7 — Moment Tensors & Magnitudes
+    - title: Week 7 — Moment Tensors & Magnitudes
       children:
         - file: lectures/moment-tensor
         - file: notebooks/07a_Moment_Tensor_Practice
@@ -59,12 +59,12 @@ project:
         - file: lectures/07d_source_dynamic
         - file: notebooks/07d_source_dynamic
 
-    - title: Module 8 — Earthquake Dynamics
+    - title: Week 8 — Earthquake Dynamics
       children:
         - file: lectures/08_nucleation_dynamics
         - file: notebooks/08_Nucleation_Dynamics_Practice
 
-    - title: Module 9 — Synthesis & Frontiers
+    - title: Week 9 — Synthesis & Frontiers
       children:
         - file: lectures/09_synthesis_frontiers
 

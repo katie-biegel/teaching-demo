@@ -43,9 +43,10 @@ Each notebook includes a Colab badge — click it to run in Google Colab with no
 
 MIT — see [LICENSE](LICENSE).
 
-## Contact
+## Administrative Information
 
 **Instructor**: Amanda M. Thomas, University of California, Davis <br>
 **Email**: amthom@ucdavis.edu <br>
 **Website**: [amtseismo.github.io](https://amtseismo.github.io/) <br>
+**Syllabus**: [Syllabus](eps164_syllabus.pdf) <br>
 **Repo**: <https://github.com/amtseismo/EPS164>

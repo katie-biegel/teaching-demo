@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Deploy Book](https://github.com/amtseismo/EPS164/actions/workflows/deploy.yml/badge.svg)](https://github.com/amtseismo/EPS164/actions/workflows/deploy.yml)
 
-Computational labs and lectures for **EPS 164** Seismology at the University of California, Davis by Amanda Thomas. Materials supplement Peter Shearer's *Introduction to Seismology 3rd Edition* with hands-on Python exercises using real seismic data.
+Lecture notes, notebooks, and other course content for **EPS 164** Seismology at the University of California, Davis by Amanda Thomas. Materials supplement Peter Shearer's *Introduction to Seismology 3rd Edition* with hands-on Python exercises using real seismic data.
 
 **📖 Course site:** <https://amtseismo.github.io/EPS164/>
 
@@ -17,16 +17,18 @@ A train thrown down by the earthquake at Point Reyes Station. The train was stan
 
 ## Course Schedule
 
-| Module | Lecture | Labs | Topics |
-|--------|---------|------|--------|
-| 1 — Data Foundations | — | 01 | FDSN data access, ObsPy, Fourier analysis, filtering |
-| 2 — Stress & Strain | [Stress & Strain](lectures/02_Stress_Strain_Lecture.md) | 02 | Elastic constants, stress/strain tensors, Hooke's Law |
-| 3 — Body Waves | [Ray Theory](lectures/ray-theory.md) | 03a–c | P/S polarization, ray tracing (PyKonal), global phases (TauP) |
-| 4 — Reflection | — | 04a–b | Reflection/transmission coefficients, CMP, NMO, migration |
-| 5 — Surface Waves | [Surface Waves](lectures/surface-waves.md) | 05a–d | Rayleigh & Love waves, dispersion, ambient noise |
-| 6 — Earthquake Sources | [Inverse Problem](lectures/earthquake-location.md) | 06a | Earthquake location methods & uncertainties |
-| 7 — Moment Tensors & Magnitudes | [Moment Tensors](lectures/moment-tensor.md), [Radiation Patterns](lectures/07b-radiation-patterns.md), [Magnitudes](lectures/07c-magnitudes.md) | 07a–d | Moment tensor decomposition, radiation patterns, magnitude scales |
-| Optional | [Tomography](lectures/tomography-lecture-whiteboard.md) | — | Travel-time tomography, surface wave inversion |
+| Week | Topic | Reading | Dates |
+|------|-------|---------|-------|
+| Week 1 | [Intro and Foundations](notebooks/01_data_fourier_practice) | N/A | 3/31 and 4/1 |
+| Week 2 | [Stress and Strain](lectures/02_stress_strain) | Chapter 2 | 4/7 and 4/9 |
+| Week 3 | The Wave Equation | Chapter 3 | 4/14 |
+| Week 4 | Ray Theory and Travel Times | Chapter 4 | 4/21 and 4/23 |
+| Week 5 | Earth Structure from Travel Times | Chapter 5 | 4/28 and 4/30 |
+| Week 6 | Amplitudes and Attenuation | Chapter 6 | 5/5 and 5/7 |
+| Week 7 | Surface Waves | Chapter 8 | 5/12 and 5/14 |
+| Week 8 | Earthquake Sources | Chapter 9 | 5/19 and 5/21 |
+| Week 9 | Sources (cont.) and Seismotectonics | Chapter 9 (cont.) | 5/26 and 5/28 |
+| Week 10 | Modern Seismology | TBD | 6/2 and 6/4 |
 
 Each notebook includes a Colab badge — click it to run in Google Colab with no local setup.
 

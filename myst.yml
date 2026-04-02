@@ -18,7 +18,7 @@ project:
       children:
         - file: lectures/01_seismic_instrumentation
         - file: demos/01_seismometer_response_demo
-        - file: notebooks/01_data_fourier_practice
+        - file: notebooks/01_data_fourier_practice_strengthened
 
     - title: Week 2 — Stress & Strain
       children:

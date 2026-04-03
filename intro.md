@@ -19,7 +19,7 @@ A train thrown down by the earthquake at Point Reyes Station. The train was stan
 
 | Week | Topic | Reading | Dates |
 |------|-------|---------|-------|
-| Week 1 | Intro and Foundations | N/A | 3/31 and 4/1 |
+| Week 1 | Intro and Foundations | Chapter 1 and 11 | 3/31 and 4/1 |
 | Week 2 | Stress and Strain | Chapter 2 | 4/7 and 4/9 |
 | Week 3 | The Wave Equation | Chapter 3 | 4/14 |
 | Week 4 | Ray Theory and Travel Times | Chapter 4 | 4/21 and 4/23 |

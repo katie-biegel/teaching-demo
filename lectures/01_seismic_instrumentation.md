@@ -2,16 +2,17 @@
 
 ## Purpose
 
-So far in this course, we have described seismic waves using the displacement field:
+In this course, we describe seismic waves using the displacement field:
 
 $$
 \mathbf{u}(\mathbf{x}, t)
 $$
 
-But we have not yet addressed a fundamental question:  
-**How do we actually measure this motion?**
+However, seismic data are not direct measurements of this quantity.  They are shaped by the instruments used to record ground motion.
 
-Seismology relies on instruments that convert ground motion into electrical signals. In this chapter, we introduce how these instruments work and how they influence the data we record.
+**This raises a fundamental question:**  How do seismometers measure Earth motion, and how does instrument response influence what we observe?
+
+In this chapter, we introduce the basic physics of seismic instrumentation and show how recorded signals relate to true ground motion. Understanding instrument response is essential for interpreting seismic data throughout the course.
 
 ---
 
@@ -41,9 +42,7 @@ Understanding this filtering is essential for interpreting seismic data.
 
 ## Inertial Seismometers
 
-Most seismometers are based on a simple physical idea: **inertia**.
-
-A mass is suspended inside the instrument. When the ground moves, the instrument case moves with it, but the mass tends to remain stationary. The instrument measures the motion of the mass relative to the case.
+Most seismometers are based on a simple physical idea: **inertia**.  A mass is suspended inside the instrument. When the ground moves, the instrument case moves with it, but the mass tends to remain stationary. The instrument measures the motion of the mass relative to the case.
 
 This relative motion can be recorded in different ways—displacement, velocity, or acceleration—and this choice strongly affects the instrument response.
 
@@ -51,13 +50,13 @@ This relative motion can be recorded in different ways—displacement, velocity,
 
 ## Equation of Motion
 
-We can describe the motion of the suspended mass using Newton’s second law. If \( u(t) \) is the ground displacement and \( z(t) \) is the displacement of the mass relative to the ground, the system behaves as a **damped harmonic oscillator**:
+We can describe the motion of the suspended mass using Newton’s second law. If $ u(t) $ is the ground displacement and $ z(t) $ is the displacement of the mass relative to the ground, the system behaves as a **damped harmonic oscillator**:
 
 $$
 \ddot{z} + 2\epsilon \dot{z} + \omega_0^2 z = -\ddot{u}
 $$
 
-This equation shows that the instrument is driven by **ground acceleration**, even if it records displacement.
+This equation shows that the instrument is driven by **ground acceleration**, even if it records displacement.  $ \omega_0^2 = k/m $ and $ \omega_0 $ is the resonant angular frequency.  The damping parameter, $ \epsilon $ is defined such that $ 2\epsilon = D/m $.  
 
 ---
 
@@ -65,15 +64,9 @@ This equation shows that the instrument is driven by **ground acceleration**, ev
 
 To understand how a seismometer modifies signals, it is useful to work in the frequency domain.
 
-The response can be written as:
-
-$$
-Z(\omega) = A(\omega)e^{i\phi(\omega)}
-$$ 
-
-where:
-- $$A(\omega)$$ describes how amplitudes are scaled  
-- $$\phi(\omega)$$ describes phase shifts  
+The response can be written as $ \Zeta(\omega) = A(\omega)e^{i\phi(\omega)} $ where:
+- $ A(\omega) $ describes how amplitudes are scaled  
+- $ \phi(\omega) $ describes phase shifts  
 
 **The key point is that both amplitude and phase depend on frequency.**
 
@@ -83,16 +76,13 @@ This means that a seismometer acts as a **filter**, altering the signal in a pre
 
 ## Damping and Frequency Dependence
 
-The behavior of the instrument depends strongly on the damping parameter $$h$$:
+Recall that $ k $ is the spring stiffness and $ D $ is the viscous damping constant.  The strength of the damping relative to the spring is defined by $ h = \epsilon/\omega_0 $. The behavior of the instrument depends strongly on the damping parameter $ h $:
 
-- Near **critical damping** ($$h \approx 1$$), the response is stable and well-behaved  
+- Near **critical damping**,  $ h \approx 1 $, the response is stable and well-behaved  
 - Lower damping produces oscillations (ringing)  
 - Higher damping slows the response  
 
-At high frequencies, the mass remains nearly stationary and the instrument tracks ground motion well.  
-At low frequencies, the response decreases and the instrument becomes less sensitive.
-
-In practice, seismometers only record a limited frequency band.
+At high frequencies, the mass remains nearly stationary and the instrument tracks ground motion well.  At low frequencies, the response decreases and the instrument becomes less sensitive.  In practice, seismometers only record a limited frequency band.
 
 ---
 
@@ -115,9 +105,6 @@ Seismic observations are often divided into two bands, separated by the **micros
 
 - **Long-period (low frequency)** data emphasize surface waves and are particularly useful for studying earthquake sources and modeling waveforms.
 
-In general:
-
-Short-period data constrain **timing**, while long-period data constrain **waveform shape and physics**.
 
 ---
 

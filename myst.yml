@@ -23,8 +23,8 @@ project:
     - title: Week 2 — Stress & Strain
       children:
         - file: lectures/02_stress_strain
-        - file: demos/02_strain_rotation_demo
         - file: demos/02_principal_stress_directions_demo
+        - file: demos/02_strain_rotation_demo
         - file: notebooks/02_stress_strain_practice
 
     - title: Week 3 — The Wave Equation

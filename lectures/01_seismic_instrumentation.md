@@ -54,6 +54,7 @@ This relative motion can be recorded in different ways—displacement, velocity,
 ---
 name: Schematic of a simple inertial seismometer.
 alt: Schematic of a simple inertial seismometer.
+width: 600px
 ---
 
 Schematic of a simple inertial seismometer

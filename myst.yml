@@ -30,6 +30,7 @@ project:
     - title: Week 3 — The Wave Equation
       children:
         - file: lectures/03_seismic_wave_equation
+		- file: demos/03_1D_finite_difference_demo_with_widgets
         - file: notebooks/03_wave_equation_practice
 		
     - title: Week 4 — Ray Theory

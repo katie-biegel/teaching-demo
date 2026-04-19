@@ -33,12 +33,9 @@ project:
         - file: demos/03_1D_finite_difference_demo_with_widgets
         - file: notebooks/03_wave_equation_practice
 		
-    - title: Week 4 — Ray Theory
+    - title: Week 4 — Travel Times
       children:
-        - file: lectures/ray-theory
-        - file: notebooks/03a_Body_Waves_Theory
-        - file: notebooks/03b_Ray_Tracing_Cartesian_Practice
-        - file: notebooks/03c_Global_Phases_Practice
+        - file: lectures/04_ray_theory
 
 #    - title: Week 4 — Reflection Seismology
 #      children:

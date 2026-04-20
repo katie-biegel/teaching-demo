@@ -1,4 +1,4 @@
-# Chapter 4 Lecture 1: Ray Theory and Seismic Rays
+# Chapter 4: Ray Theory and Seismic Rays
 
 ## Purpose
 
@@ -204,7 +204,7 @@ $$ \frac{dT}{dX} = p$$
 Note that: 
 - Observations: $ T(X) $
 - Slopes give: $ p(X) $
-- Geometry + physics link $ p $ to turning depth
+- Ray parameter varies along the curve (each arrival has different $p$)
 
 This is the foundation of **travel-time inversion** which is how we understand the structure of the Earth's interior
 
@@ -218,7 +218,159 @@ Travel-time curve T(X) and ray parameter. The slope of the tangent line at any p
 
 ---
 
-## Looking ahead
-Next, we will:
-- Turn these ideas into **numerical ray tracing**
-- Explore when ray theory **fails** (LVZs, triplications)
+## Slowness and Ray Geometry
+
+The **slowness vector** $\mathbf{s}$ has magnitude $|\mathbf{s}| = u$.  This can be geometrically decomposed into components.  The horizontal slowness $s_x = p$ and the vertical slowness $\eta = u \cos \theta = \sqrt{u^2 - p^2}$.
+
+Note:
+- $p$ is constant along a ray (in layered media)
+- $\eta$ controls how the ray propagates vertically
+
+```{figure} ../figures/04_ray_geometry.png
+---
+name: fig-ray-geometry
+width: 600 px
+alt: Geometric breakdown of slowness into horizontal and vertical slowness
+---
+Geometric breakdown of slowness into horizontal and vertical components.
+```
+
+---
+
+## Distance and Travel Time Along a Ray
+
+We want to compute distance, $X(p)$, along a ray.  From geometry:
+
+$$
+\frac{dx}{ds} = \frac{p}{u}, \quad
+\frac{dz}{ds} = \sqrt{1 - \frac{p^2}{u^2}}, \quad
+\frac{dx}{dz} = \frac{p}{\sqrt{u^2 - p^2}}
+$$
+
+$$
+x(z_1, z_2, p) = p \int_{z_1}^{z_2} \frac{dz}{\sqrt{u^2(z) - p^2}}
+$$
+
+While the above is a general expression between two depths, for a surface source that turns at $z_p$:
+
+>Surface to surface range: 
+$$X(p) = 2p \int_{0}^{z_p} \frac{dz}{\sqrt{u^2(z) - p^2}}$$
+
+---
+
+## Travel Time
+
+The travel time, $T(X)$, can be computed in a similar way.  See Shearers Section 4.2 for details.
+
+>Surface to surface travel time: 
+$$T(p) = 2 \int_{0}^{z_p} \frac{u^2(z)}{\sqrt{u^2(z) - p^2}}$$
+
+---
+
+## Layered Velocity Model
+
+For a stack of **homogeneous layers**, integrals become summations and the equations above reduce to 
+$$
+X(p) = 2p \sum_i \frac{\Delta z_i}{\sqrt{u_i^2 - p^2}}, \quad u_i > p
+$$ 
+and 
+$$T(p) = 2 \sum_i \frac{u_i^2 \, \Delta z_i}{\sqrt{u_i^2 - p^2}}, \quad u_i > p.$$
+
+Note:
+- Sum over layers **from the top downward**
+- Stop when $u_i \le p$ otherwise $\sqrt{u_i^2 - p^2}$ becomes imaginary 
+- Physically this means there is no propagation into that layer
+
+---
+
+## Example: Computing $X(p)$ and $T(p)$
+
+Consider a homogeneous three-layer model with 3 km layer thicknesses and velocities 4, 6 and 8 km/s for the top, middle and bottom layers, respectively. What is the surface-to-surface distance and travel time for a ray with p= 0.15 s/km?
+
+### Model Summary
+
+| Layer | Depth Range (km) | Thickness (km) | Velocity (km/s) | Slowness $u$ (s/km) | $u_i > p$? |
+|------|------------------|----------------|------------------|----------------------|-------------|
+| 1    | 0–3              | 3              | 4                | 0.25                 | Yes         |
+| 2    | 3–6              | 3              | 6                | 0.167                | Yes         |
+| 3    | 6–9              | 3              | 8                | 0.125                | No          |
+
+Note that Ray **turns above layer 3**.
+
+---
+
+### Computing surface-to-surface distance
+
+We use:
+
+$$
+X(p) = 2p \sum_i \frac{\Delta z_i}{\sqrt{u_i^2 - p^2}}, \quad u_i > p
+$$
+
+Only layers 1 and 2 satisfy $u_i > p$, so:
+
+$$
+X(p) = 2p \left( \frac{z_1}{\sqrt{u_1^2 - p^2}} + \frac{z_2}{\sqrt{u_2^2 - p^2}} \right)
+$$
+
+Substituting values
+
+$$
+p = 0.15, \quad z_1 = z_2 = 3, \quad u_1 = 0.25, \quad u_2 = 0.167
+$$
+
+$$
+X(p) = 2(0.15)\left(
+\frac{3}{\sqrt{0.25^2 - 0.15^2}} +
+\frac{3}{\sqrt{0.167^2 - 0.15^2}}
+\right)
+$$
+
+$$
+X(p) = 0.30 \left(
+\frac{3}{\sqrt{0.040}} +
+\frac{3}{\sqrt{0.0054}}
+\right)
+$$
+
+$$
+X(p) \approx 16.9 \ \text{km}
+$$
+
+### Computing surface-to-surface travel time
+
+We use:
+
+$$
+T(p) = 2 \sum_i \frac{u_i^2 \, \Delta z_i}{\sqrt{u_i^2 - p^2}}, \quad u_i > p
+$$
+
+Only layers 1 and 2 satisfy $u_i > p$, so:
+
+$$
+T(p) = 2 \left( \frac{u_1^2 z_1}{\sqrt{u_1^2 - p^2}} + \frac{u_2^2 z_2}{\sqrt{u_2^2 - p^2}} \right)
+$$
+
+Substituting values
+
+$$
+p = 0.15, \quad z_1 = z_2 = 3, \quad u_1 = 0.25, \quad u_2 = 0.167
+$$
+
+$$
+T(p) = 2 \left(
+\frac{0.25^2 \cdot 3}{\sqrt{0.25^2 - 0.15^2}} +
+\frac{0.167^2 \cdot 3}{\sqrt{0.167^2 - 0.15^2}}
+\right)
+$$
+
+$$
+T(p) = 2 \left(
+\frac{0.0625 \cdot 3}{\sqrt{0.040}} +
+\frac{0.0279 \cdot 3}{\sqrt{0.0054}}
+\right)
+$$
+
+$$
+T(p) \approx 4.17 \ \text{s}
+$$

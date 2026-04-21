@@ -1,5 +1,12 @@
 # Chapter 4: Ray Theory and Seismic Rays
 
+```{figure} ../figures/qrcode_47.png
+---
+name: 4/14 Quiz QR Code
+alt: 4/14 Quiz QR Code
+---
+```
+
 ## Purpose
 
 Seismic waves are governed by the wave equation, but solving it exactly is often complicated.  Ray theory provides a simpler description by treating seismic energy as traveling along **paths (rays)**.

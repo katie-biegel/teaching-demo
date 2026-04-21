@@ -1,12 +1,5 @@
 # Chapter 3 Lecture: The Seismic Wave Equation and Wave Properties
 
-```{figure} ../figures/qrcode_47.png
----
-name: 4/14 Quiz QR Code
-alt: 4/14 Quiz QR Code
----
-```
-
 ## Purpose
 
 Using the framework of **stress** and **strain**, we now derive the equation that governs how seismic waves propagate through the Earth.

@@ -380,3 +380,176 @@ $$
 $$
 T(p) \approx 4.17 \ \text{s}
 $$
+
+## Prograde and Retrograde
+
+In the Earth, **range $X(p)$ generally increases as slowness $p$ decreases**.  Smaller takeoff angle → larger distance.
+
+Prograde branch:
+- $\frac{dX}{dp} < 0$
+- Rays spread outward with decreasing $p$
+- Most common behavior in smoothly varying velocity structures
+
+```{figure} ../figures/04_prograde_tt_curve.png
+---
+name: prograde-tt-curve
+width: 600 px
+alt: Prograde travel time curve
+---
+Prograde travel time curve.
+```
+
+Retrograde branch:
+- $\frac{dX}{dp} > 0$
+- Rays **turn back on themselves**
+- Caused by **rapid velocity increases with depth**
+
+```{figure} ../figures/04_retrograde_tt_curve.png
+---
+name: retrograde-tt-curve
+width: 650 px
+alt: Retrograde travel time curve
+---
+Retrograde travel time curve.
+```
+
+## Travel time curve complexities
+
+**Triplications** in Travel-Time Curves occur when there is a transition from **prograde → retrograde → prograde**
+
+**Caustics** occur at the endpoints of the triplication and are defined by $\frac{dX}{dp} = 0$.  Rays with different takeoff angles arrive at the **same distance**.  This means that energy becomes focused.  Geometrical ray theory predicts **infinite amplitude** at caustics.
+
+```{figure} ../figures/04_triplication.png
+---
+name: triplication
+width: 700 px
+alt: Triplications and caustics in travel time curves.
+---
+Triplications and caustics in travel time curves.
+```
+
+## Reduced Velocity
+
+Travel times can be plotted using a **reduction velocity** $v_r$.  The reduced time $T_{\text{red}} = T - \frac{X}{v_r}$.  In this space, waves with velocity $v_r$ plot as horizontal lines and velocity reduction has the advantage of expanding the time scale to highlight structure.
+
+```{figure} ../figures/04_reduced_velocity.png
+---
+name: reduced velocity
+width: 500 px
+alt: Travel time curve with reduced velocity.
+---
+Travel time curve with reduced velocity.
+```
+
+## Decomposing Travel Time
+
+```{figure} ../figures/04_tt_decomp.png
+---
+name: travel time decomposition
+width: 400 px
+alt: Travel time decomposition.
+---
+The travel time along a ray segment can be decomposed into the sum of the horizontal slowness times the horizontal offset (time to travel from A to B) and the vertical slowness times the vertical offset (time to travel from B to C)..
+```
+
+For a small ray segment $dt = p\,dx + \eta\,dz$
+
+- $p = u \sin\theta$ → **horizontal slowness**
+- $\eta = u \cos\theta = \sqrt{u^2 - p^2}$  → **vertical slowness**
+- $p\,dx$ → time from horizontal propagation  
+- $\eta\,dz$ → time from vertical propagation
+
+The total travel time is the sum of horizontal and vertical contributions.
+
+## Defining $\tau(p)$
+
+Integrating along the ray:
+
+>Total travel time: 
+$$T(p) = pX(p) + \tau(p) = pX(p) + 2 \int_0^{z_p} \eta(z)\,dz$$
+Delay time:
+$$\tau(p) = 2 \int_0^{z_p} \eta(z)\,dz$$
+
+Physical meaning
+- $pX(p)$ → horizontal contribution  
+- $\tau(p)$ → depth-integrated vertical contribution  
+
+For a layered medium:
+
+$$
+\tau(p) = 2 \sum_i \sqrt{u_i^2 - p^2}\, z_i
+\quad (u_i > p)
+$$
+
+## Geometry and Properties of $\tau(p)$
+
+```{figure} ../figures/04_delay_time_geometry.png
+---
+name: Delay time geometry
+width: 400 px
+alt: Delay time geometry.
+---
+The delay time, $\tau(p) = T − pX$, is given by the intercept of the tangent to the travel time curve.
+```
+
+So the travel time curve has
+- slope = $p$  
+- intercept = $\tau(p)$  
+
+---
+
+## Key properties of $\tau(p)$
+
+Working with $\tau(p)$ is advantageous for a number of reasons:
+- $\frac{d\tau}{dp} = -X(p)$
+- Because X is always positive, $\tau(p)$ is always decreasing
+- $\frac{d^2\tau}{dp^2} = -\frac{dX}{dp}$ so concave up → prograde and concave down → retrograde 
+- $T(X)$ → **multivalued** (triplications) whereas $X(p)$, $T(p)$, $\tau(p)$ → **single-valued**
+- Makes it possible to "unravel" triplications in travel time curves
+
+```{figure} ../figures/04_tau_p.png
+---
+name: Delay time geometry
+width: 600 px
+alt: Delay time geometry.
+---
+The $\tau(p)$ function “unravels” triplications in travel time curves. Prograde branches have concave upward $\tau(p)$ curves; retrograde branches have concave downward τ(p) curves.
+```
+
+---
+
+## Why use $\tau(p)$?
+
+- Simpler mathematical behavior  
+- Useful for ray tracing (TauP methods)  
+- Ideal for velocity inversion problems
+
+---
+
+## Low-Velocity Zones (LVZ): Ray Behavior
+
+In most of the Earth velocity **increases with depth**.  In low-velocity zones, velocity **decreases with depth**.  From $p = u \sin \theta$, as $u$ increases with depth, $\sin\theta$ decreases, rays bend **downward (toward vertical)**.
+
+Key implications:
+- rays from the surface **do not turn within the LVZ**
+- large $p$ rays turn **above** the LVZ
+- only small $p$ rays penetrate and turn **below**
+
+---
+
+## LVZs: Shadow Zones and Waveguides
+
+LVZs produce **shadow zones** which are gaps in ray coverage at the surface.  Observationally they manifest as missing arrivals in $T(X)$ and gaps in $\tau(p)$.
+
+Consequence is that LVZ structure is **difficult to constrain**...travel-time data alone may be insufficient.
+
+If waves originate within an LVZ, rays bend back toward the velocity minimum and energy becomes **trapped**.  LVZ acts as a **waveguide** allows long-distance propagation.
+
+```{figure} ../figures/04_lvz.png
+---
+name: Low velocity zone
+width: 600 px
+alt: Low velocity zone.
+---
+ A low-velocity zone (LVZ) results from a velocity decrease with depth. Rays curve downward as the velocity decreases, creating a shadow zone on the surface and gaps in the $T(X)$ and $\tau(p)$ curves.
+```

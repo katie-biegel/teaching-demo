@@ -39,6 +39,10 @@ project:
         - file: demos/04_travel_time_curve_demo
         - file: notebooks/04_ray_theory_practice
 
+    - title: Week 5 — Inversion
+      children:
+        - file: lectures/05_inversion
+		
 #    - title: Week 4 — Reflection Seismology
 #      children:
 #        - file: notebooks/04a_Reflection_Transmission_Theory
@@ -86,9 +90,9 @@ project:
 #
 
     # --- References ---
-    - title: References
-      children:
-        - file: bibliography
+#    - title: References
+#      children:
+#        - file: bibliography
 
 site:
   template: book-theme

@@ -323,11 +323,7 @@ Solve:
 
 ## The Geophysical Forward Problem versus the Geophysical Inverse Problem
 
-Often in geophysics, we have to solve the **inverse problem**.
-
-The inverse problem is the estimations of parameters of a **model** of the Earth system from **data** or observations.
-
-The inverse problem is different from the forward problem.
+Often in geophysics, we have to solve the **inverse problem**. The inverse problem is the estimations of parameters of a **model** of the Earth system from **data** or observations. The inverse problem is different from the forward problem.
 
 
 👉 **The Forward Problem** aka the direct problem or the forward model
@@ -354,9 +350,7 @@ The forward problem has a solution that:
 2. is unique.
 3. is stable (i.e. a small model change $\delta m$ gives a small data change $\delta d$).
 
-An example of the forward problem is calculting arrival times for seismic waves given a seismic velocity model.
-
-Forward problems are phyiscal problems that occur in nature. Inverse problems are mathematical.
+An example of the forward problem is calculting arrival times for seismic waves given a seismic velocity model. Forward problems are phyiscal problems that occur in nature. Inverse problems are mathematical.
 
 👉 **The Inverse Problem** 
 
@@ -440,9 +434,7 @@ $$
 u = u_0 (1+s)
 $$ 
 
-or the modeled slowness ($u_0$) plus some small fractional slowness perturbation, $s$.  
-
-The contribution of this slowness perturbation to the travel time residual is therefore:
+or the modeled slowness ($u_0$) plus some small fractional slowness perturbation, $s$. The contribution of this slowness perturbation to the travel time residual is therefore:
 
 $$
 \Delta r = \Delta t - \Delta t_0 = \Delta x u_0 (1+s) - \Delta x u_0 = \Delta t_0 s
@@ -483,7 +475,7 @@ b_{21} & b_{22} & ... \\
 s_1 \\
 s_2 \\
 ... \\
-r_m
+s_m
 \end{bmatrix}
 $$
 
@@ -499,7 +491,51 @@ ___
 
 ## Least-Squares Inversion
 
-Most rays will travel through a limited number of blocks. Typically, $\mathbf{G}$ will hold mostly zeros. If the number
+Most rays will travel through a limited number of blocks. Typically, $\mathbf{G}$ will hold mostly zeros. If the number of travel time observations is greater than the number of model blocks ($n>m$) and our problem is over-determined, then we can solve using the *least squares solution*:
+
+$$
+\mathbf{m} = (\mathbf{G}^T\mathbf{G})^{-1} \mathbf{G}^T \mathbf{d}
+$$
+
+For most tomographic problems, $\mathbf{G}^T\mathbf{G}$ is invariably singular or ill-conditioned. This can be due to:
+- Near identical ray paths,
+- Blocks being oversampled or not sampled at all,
+- Or having a model so large that we cannnot solve using direct matrix inversion.
+
+---
+
+## Regularization
+
+A common approach to ill-conditioned least squares inversion is to use regularization using *damped least squares inversion*.  We therefore solve:
+
+$$
+\begin{bmatrix}
+\mathbf{d} \\
+0
+\end{bmatrix}
+= 
+\begin{bmatrix}
+\mathbf{G} \\
+\lambda \mathbf{I}
+\end{bmatrix}
+\mathbf{m}
+$$
+
+where $\mathbf{I}$ is the identity matrix and $\lambda$ is a weighting parameter that controls damping. The solution to this equation minimizes the function:
+
+$$
+|| \mathbf{G}\mathbf{m} - \mathbf{d} ||^2 + \lambda^2 ||\mathbf{m}||^2
+$$
+
+where the first term is the misfit to the data and the second term is the variance of the model. $\lambda$ controls the trade-off between misfit and model variance. Typically, a $\lambda$ value is selected to miminimize the L-curve:
+
+```{figure} ../figures/05_L_curve.png
+---
+name: L Curve.
+width: 400px
+---
+The L-Curve is the statistical model used to select the $\lambda$ value such that you minimize both misfit and model variance.
+```
 
 ___
 

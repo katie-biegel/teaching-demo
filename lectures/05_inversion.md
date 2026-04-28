@@ -505,11 +505,7 @@ For most tomographic problems, $\mathbf{G}^T\mathbf{G}$ is invariably singular o
 
 ---
 
-## Regularization
-
----
-
-## Damping
+## Regularization: Damping
 
 A common approach to ill-conditioned least squares inversion is to use regularization using *damped least squares inversion*.  We therefore solve:
 
@@ -539,7 +535,7 @@ Increasing damping will add stability to the solution. However, a damped least s
 
 ---
 
-## Smoothing
+## Regularization: Smoothing
 
 Commonly, to measure model roughness we compute a *Laplacian operator* $\nabla^2$. This is a difference operator over 2D or 3D block geometries. To minimize roughness, we solve for:
 
@@ -600,8 +596,3 @@ width: 400px
 ---
 Ray angles in tomographic problems are typically limited. Therefore, resolution in of velocity anomalies is limited parallel to the ray path.
 ```
-
-
-
-
-

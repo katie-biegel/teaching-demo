@@ -596,3 +596,211 @@ width: 400px
 ---
 Ray angles in tomographic problems are typically limited. Therefore, resolution in of velocity anomalies is limited parallel to the ray path.
 ```
+
+---
+
+## Earthquake Location
+
+Earthquake location is one of the most common and important problems in seismology.  It involves determining the **origin time and location** of an earthquake using seismic travel times.
+
+An earthquake is described by four parameters:
+
+$$
+\mathbf{m} = (T, x, y, z)
+$$
+
+- $T$ = origin time  
+- $(x, y, z)$ = hypocenter  
+- Epicenter = surface projection  
+
+Assumptions:
+- Earthquake is a **point source**  
+- First arrivals contain sufficient information  
+
+---
+
+## Forward Problem
+
+The setup is relatively straightforward.  Given a model $\mathbf{m}$ and an Earth model you can predict the travel time between a source at location $t_i^{\text{pred}} = F_i(\mathbf{m})$
+
+Residual:
+
+$$
+r_i = t_i - t_i^{\text{pred}} = t_i - F_i(\mathbf{m})
+$$
+
+Goal: Find $\mathbf{m}$ that best fits observed travel times
+
+---
+
+## Nonlinearity
+
+Unfortunately, this problem doesnt lend itself to simple inversion because travel times depend **nonlinearly** on location:
+
+$$
+t_i = \frac{\sqrt{(x - x_i)^2 + (y - y_i)^2}}{v}
+$$
+
+Implications:
+- Cannot solve with linear algebra  
+- No closed-form solution  
+- Requires **search or iteration**  
+
+---
+
+## Measuring Misfit
+>Least Squares (L2)
+$$
+\epsilon = \sum (t_i - t_i^{\text{pred}})^2
+$$
+- Assumes Gaussian errors  
+- Sensitive to outliers  
+
+>Alternative: L1 Norm
+$$
+\epsilon = \sum |t_i - t_i^{\text{pred}}|
+$$
+- More robust to outliers  
+- Harder to solve  
+
+---
+
+## Linearizing the Problem
+
+A full grid search over all possible models is often **computationally impractical**.
+
+We write the model as:
+
+$$
+\mathbf{m} = \mathbf{m}_0 + \Delta \mathbf{m}
+$$
+
+- $\mathbf{m}_0$ = current estimate  
+- $\Delta \mathbf{m}$ = small adjustment  
+
+Predicted travel times are approximated using a first-order expansion:
+
+$$
+t_i^{\text{pred}}(\mathbf{m}) \approx t_i^{\text{pred}}(\mathbf{m}_0) + \sum_j \frac{\partial t_i^{\text{pred}}}{\partial m_j} \Delta m_j
+$$
+
+This makes the problem **locally linear**.  Residuals become:
+
+$$
+r_i(\mathbf{m}_0) \approx \sum_j G_{ij} \Delta m_j
+$$
+
+where:
+
+$$
+G_{ij} = \frac{\partial t_i^{\text{pred}}}{\partial m_j}
+$$
+
+- $G$ = matrix of partial derivatives called the Jacobian  
+- describes how travel times change with model parameters  
+
+---
+
+## Geiger's Method: Iterative Least Squares Solution
+
+We solve:
+
+$$
+\mathbf{r} = G \Delta \mathbf{m}
+$$
+
+using **least squares** to find $\Delta \mathbf{m}$.
+
+Since the linearization is only valid near the current guess, we **iterate**:
+
+1. Start with initial guess $\mathbf{m}_0$
+2. Compute residuals $\mathbf{r}$ and Jacobian $\mathbf{G}$ at $\mathbf{m}_0$
+3. Solve: $\Delta\mathbf{m} = (\mathbf{G}^T\mathbf{G})^{-1}\mathbf{G}^T\mathbf{r}$
+4. Update: $\mathbf{m}_0 \leftarrow \mathbf{m}_0 + \Delta\mathbf{m}$
+5. Repeat until residuals are small and the solution stops changing.
+
+---
+
+## Covariance and Uncertainty
+
+After solving for the model, we want to know **How well is the solution constrained?**
+
+For a linearized problem:
+
+$$
+\mathbf{r} = \mathbf{G}\Delta \mathbf{m}
+$$
+
+>The model covariance matrix is: 
+$$
+\mathbf{C_m} = \sigma^2 (\mathbf{G}^T \mathbf{G})^{-1}
+$$
+
+Where:
+- $\mathbf{C_m}$ = model covariance  
+- $\sigma^2$ = data variance  
+- $(\mathbf{G}^T \mathbf{G})^{-1}$ = sensitivity of solution to data  
+
+---
+
+### Interpretation
+
+- Diagonal terms → parameter uncertainties  
+- Off-diagonal terms → parameter trade-offs  
+
+👉 Geometry of stations controls uncertainty
+
+## Relative vs Absolute Location
+
+Unmodeled 3-D velocity structure introduces **bias in travel times**.  Because of this, absolute locations can be inaccurate whereas relative locations within a cluster can be much more accurate.  
+
+Why?
+- Nearby events share similar ray paths  
+- Travel-time errors are **correlated**
+
+The simplest way to improve relative location accuracy is to use a **master event**.
+
+Define relative (differential) arrival times:
+
+$$
+t_i^{\text{rel}} = t_i - t_i^{\text{master}}
+$$
+
+Set the master event location to $\mathbf{m}_0$. Then the relative location $\Delta \mathbf{m}$ is obtained from:
+
+$$
+t_i^{\text{rel}} = t_i^{\text{pred}}(\mathbf{m}) - t_i^{\text{pred}}(\mathbf{m}_0)
+$$
+
+Using a linear approximation:
+
+$$
+t_i^{\text{rel}} \approx \sum_j \frac{\partial t_i^{\text{pred}}}{\partial m_j} \Delta m_j
+$$
+
+---
+
+## Improving Relative Locations
+
+Methods:
+- **Station terms** → correct systematic station biases  
+- **Double-difference** → minimize residual differences between nearby events  
+
+These approaches:
+- reduce effects of unknown structure  
+- sharpen seismicity patterns  
+
+---
+
+## Waveform Cross-Correlation
+
+Nearby earthquakes often have **similar waveforms**.
+
+This allows:
+- more precise differential times  
+- detection of additional events  
+
+Applications:
+- repeating earthquakes  
+- fault slip estimates  
+- enhanced event catalogs  

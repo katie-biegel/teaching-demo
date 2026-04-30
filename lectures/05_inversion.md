@@ -1,12 +1,5 @@
 # Chapter 5: Inversion of Travel Time Data
 
-```{figure} ../figures/qrcode_47.png
----
-name: 4/28 Quiz QR Code
-alt: 4/28 Quiz QR Code
----
-```
-
 ## Purpose
 
 In previous chapters, we used a known velocity structure to predict how seismic waves travel.  We generally do not know the velocity structure in advance and it is something we want to determine.  Going from observed travel times to the subsurface velocity structure requires solving an inverse problem, which is more complex and often non-unique.
@@ -24,9 +17,12 @@ In this chapter, we develop a framework for:
 ## Learning Objectives
 
 By the end of this lecture, you should be able to:
-- XXXX
-- XXXX
-- XXXX
+-- Distinguish between the forward and inverse problems
+-- Interpret travel-time data in terms of velocity structure
+-- Use slopes and delay times to construct a layered model
+-- Formulate inverse problems as d=Gm and solve using least squares
+-- Explain non-uniqueness and the role of regularization
+-- Describe how earthquake location is solved using linearization and iterative methods
 
 ---
 

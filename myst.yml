@@ -39,7 +39,7 @@ project:
     #    - file: demos/04_travel_time_curve_demo
     #    - file: notebooks/04_ray_theory_practice
 
-    - title: Week 5 — Inversion
+    - title: Week 5 - 6 — Inversion
       children:
         - file: lectures/05_inversion
         - file: demos/05_Resolution_of_the_Tomography_Problem

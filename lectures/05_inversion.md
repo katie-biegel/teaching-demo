@@ -16,9 +16,9 @@ In this chapter, we develop a framework for:
 ## Learning Objectives
 
 By the end of this lecture, you should be able to:
--- Distinguish between the forward and inverse problems
--- Formulate inverse problems as d=Gm and solve using least squares
--- Explain non-uniqueness and the role of regularization
+- Distinguish between the forward and inverse problems
+- Formulate inverse problems as d=Gm and solve using least squares
+- Explain non-uniqueness and the role of regularization
 
 ---
 
@@ -82,13 +82,13 @@ The inverse problem has a solution that:
 
 1. may or may not exist.
 2. is generally non-unique (i.e. an infinite number of acceptable models can be found to fit the data).
-3. is often unstable (i.e. a small change to the data $\delta d$ such as **noise** gives a large model change $\delta m$).
+3. is often unstable (i.e. a small change to the data $\delta d$, such as **noise**, gives a large model change $\delta m$).
 
 An example of the inverse problem is solving for the Earth velocity structure, given an observed set of seismic arrival times.
 
 ---
 
-## Three-dimensional Velocity Inversion
+## Three-dimensional (And Two-Dimensional) Velocity Inversion
 
 Observed seismic travel times (**data**) are often different from predicted seismic travel times (**model**). We can compare the two using the **travel time *residual***.
 

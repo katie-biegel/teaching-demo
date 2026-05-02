@@ -3,8 +3,8 @@ version: 1
 
 project:
   id:
-  title: EPS 164 Seismology Course Materials
-  description: Notes and notebooks for EPS 164
+  title: Intro to Seismology Teaching Demo
+  description: Notes and notebooks for Seismology Teaching Demo
   keywords:
     - earthquake
     - seismology

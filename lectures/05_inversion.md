@@ -197,7 +197,7 @@ where $\mathbf{d}$ is our data vector (i.e. our travel time residuals), $\mathbf
 
 ___
 
-## Ex. Toy Tomorgraphy Model
+## Ex. Toy Tomography Model
 
 Let's practice by setting up a toy tomography model.
 
@@ -205,7 +205,7 @@ Let's practice by setting up a toy tomography model.
 ```{figure} ../figures/05_toy_problem.png
 ---
 name: Toy Tomography Problem Set Up
-width: 400px
+width: 800px
 ---
 Here is the (a) the model and ray geomogety for a 2D toy problem, (b) the test input velocity model to create synthetic data, and (c) the least squares solution.
 ```

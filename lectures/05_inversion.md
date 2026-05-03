@@ -197,6 +197,22 @@ where $\mathbf{d}$ is our data vector (i.e. our travel time residuals), $\mathbf
 
 ___
 
+## Ex. Toy Tomorgraphy Model
+
+Let's practice by setting up a toy tomography model.
+
+
+```{figure} ../figures/05_toy_problem.png
+---
+name: Toy Tomography Problem Set Up
+width: 400px
+---
+Here is the (a) the model and ray geomogety for a 2D toy problem, (b) the test input velocity model to create synthetic data, and (c) the least squares solution.
+```
+
+Let's start by defining $\mathbf{d}$, $\mathbf{G}$, and the true slowness perturbation model, $\mathbf{m}_{true}$.
+___
+
 ## Least-Squares Inversion
 
 Most rays will travel through a limited number of blocks. Typically, $\mathbf{G}$ will hold mostly zeros. If the number of travel time observations is greater than the number of model blocks ($n>m$) and our problem is over-determined, then we can solve using the *least squares solution*:

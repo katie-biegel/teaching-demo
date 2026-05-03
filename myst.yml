@@ -42,6 +42,7 @@ project:
     - title: Week 5 - 6 — Inversion
       children:
         - file: lectures/05_inversion
+        - file: demos/05_Tomography_Toy_Problem
         - file: demos/05_Resolution_of_the_Tomography_Problem
     #    - file: notebooks/05_earthquake_location
 				
